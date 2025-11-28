@@ -6,7 +6,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    config-pack: labforward/config-pack@1.2.3
+    config: laboperator/config-pack@1
 
   setup: true
 
@@ -14,14 +14,14 @@ usage:
   # the setup config and continuation config. Didn't find a
   # good workarond to avoid duplication yet.
   parameters:
-    my-pipeline-parameter:
+    my_pipeline_parameter:
       type: boolean
       default: true
 
   workflows:
-    use-my-orb:
+    use_my_orb:
       jobs:
-        - config-pack/pack-and-continue:
+        - config/pack_and_continue:
             # don't forget to run for tags if your packed pipeline should
             # run for tags
             filters:

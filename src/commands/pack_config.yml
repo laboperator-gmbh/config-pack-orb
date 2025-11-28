@@ -3,31 +3,31 @@ description: >
   in case of a validation error for easier debugging.
 
 parameters:
-  src-path:
+  src_path:
     type: string
-    default: "./.circleci/src"
-    description: "Path to the config source folder."
-  output-file:
+    default: './.circleci/src'
+    description: 'Path to the config source folder.'
+  output_file:
     type: string
-    default: "./.circleci/packed-config.yml"
-    description: "Name of the output file for the packed config."
+    default: './.circleci/packed_config.yml'
+    description: 'Name of the output file for the packed config.'
 
 steps:
   - run:
       name: Pack config
       environment:
-        SRC_PATH: << parameters.src-path >>
-        OUTPUT_FILE: << parameters.output-file >>
+        SRC_PATH: << parameters.src_path >>
+        OUTPUT_FILE: << parameters.output_file >>
       command: |
         circleci config pack "${SRC_PATH}" > "${OUTPUT_FILE}"
   - run:
       name: Validate config
       environment:
-        OUTPUT_FILE: << parameters.output-file >>
-      command: <<include(scripts/validate-config.sh)>>
+        OUTPUT_FILE: << parameters.output_file >>
+      command: <<include(scripts/validate_config.sh)>>
   - run:
       when: on_fail
       name: Packed config
       environment:
-        OUTPUT_FILE: << parameters.output-file >>
+        OUTPUT_FILE: << parameters.output_file >>
       command: cat "$OUTPUT_FILE"
