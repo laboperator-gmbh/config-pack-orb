@@ -1,0 +1,31 @@
+description: >
+  This command enables includes of scripts from separate files using
+  a custom tag syntax.
+
+  Define scripts in separate files inside the scripts folder. In any
+  other file then use the `!script` tag with a key to pull in the value.
+
+  ```
+  steps:
+    - run:
+        name: Run my_script.sh as if it was written in the config
+        command: !script my_script.sh
+  ```
+
+parameters:
+  src_path:
+    type: string
+    default: './.circleci/src'
+    description: 'Path to the config source folder.'
+  scripts_folder:
+    type: string
+    default: 'scripts'
+    description: 'Scripts folder name.'
+
+steps:
+  - run:
+      name: Include aliases
+      environment:
+        SRC_PATH: << parameters.src_path >>
+        SCRIPTS_FOLDER: << parameters.scripts_folder >>
+      command: <<include(scripts/include_scripts.sh)>>

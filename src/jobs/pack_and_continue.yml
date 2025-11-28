@@ -1,0 +1,36 @@
+description: >
+  Include-aliases, includes scripts, packs the config and continues the pipeline.
+
+executor: default
+
+parameters:
+  src_path:
+    type: string
+    default: './.circleci/src'
+    description: 'Path to the config source folder.'
+  alias_file:
+    type: string
+    default: 'aliases.yml'
+    description: 'Aliases file name.'
+  scripts_folder:
+    type: string
+    default: 'scripts'
+    description: 'Scripts folder name.'
+  output_file:
+    type: string
+    default: './.circleci/packed_config.yml'
+    description: 'Name of the output file for the packed config.'
+
+steps:
+  - checkout
+  - include_aliases:
+      src_path: << parameters.src_path >>
+      alias_file: << parameters.alias_file >>
+  - include_scripts:
+      src_path: << parameters.src_path >>
+      scripts_folder: << parameters.scripts_folder >>
+  - pack_config:
+      src_path: << parameters.src_path >>
+      output_file: << parameters.output_file >>
+  - continuation/continue:
+      configuration_path: << parameters.output_file >>

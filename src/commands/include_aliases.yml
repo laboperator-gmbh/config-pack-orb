@@ -11,28 +11,28 @@ description: >
 
   ```
   # aliases.yml
-  my-param:
+  my_param:
     type: string
     default: "awesome"
 
   # jobs/my-job.yml
-  my-param: !alias my-param
+  my_param: !alias my_param
   ```
 
 parameters:
-  src-path:
+  src_path:
     type: string
-    default: "./.circleci/src"
-    description: "Path to the config source folder."
-  alias-file:
+    default: './.circleci/src'
+    description: 'Path to the config source folder.'
+  alias_file:
     type: string
-    default: "aliases.yml"
-    description: "Aliases file name."
+    default: 'aliases.yml'
+    description: 'Aliases file name.'
 
 steps:
   - run:
       name: Include aliases
       environment:
-        SRC_PATH: << parameters.src-path >>
-        ALIAS_FILE: << parameters.alias-file >>
-      command: <<include(scripts/include-aliases.sh)>>
+        SRC_PATH: << parameters.src_path >>
+        ALIAS_FILE: << parameters.alias_file >>
+      command: <<include(scripts/include_aliases.sh)>>
