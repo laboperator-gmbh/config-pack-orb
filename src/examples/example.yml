@@ -6,7 +6,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    config-pack: labforward/config-pack@1.2.3
+    config-pack: laboperator/config-pack@1
 
   setup: true
 

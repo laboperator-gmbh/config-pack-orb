@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
-  config-pack: labforward/config-pack@dev:<<pipeline.git.revision>>
-  orb-tools: circleci/orb-tools@11.1
+  config-pack: laboperator/config-pack@dev:<<pipeline.git.revision>>
+  orb-tools: circleci/orb-tools@12
 
 filters: &filters
   tags:
@@ -18,7 +18,7 @@ jobs:
       # Run your orb's commands to validate them.
       # - config-pack/greet
 workflows:
-  test-deploy:
+  deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       - command-tests:
@@ -26,7 +26,7 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: labforward/config-pack
+          orb-name: laboperator/config-pack
           vcs-type: << pipeline.project.type >>
           pub-type: production
           requires:

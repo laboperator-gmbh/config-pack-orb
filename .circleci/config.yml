@@ -9,7 +9,7 @@ filters: &filters
     only: /.*/
 
 workflows:
-  lint-pack:
+  tests:
     jobs:
       - orb-tools/lint:
           filters: *filters
@@ -20,7 +20,7 @@ workflows:
       - shellcheck/check:
           filters: *filters
       - orb-tools/publish:
-          orb-name: labforward/config-pack
+          orb-name: laboperator/config-pack
           vcs-type: << pipeline.project.type >>
           requires:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
@@ -31,5 +31,6 @@ workflows:
       - orb-tools/continue:
           pipeline-number: << pipeline.number >>
           vcs-type: << pipeline.project.type >>
+          config_path: .circleci/deploy.yml
           requires: [orb-tools/publish]
           filters: *filters
