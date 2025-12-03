@@ -1,12 +1,5 @@
 # Config Pack Orb
 
-<!---
-[![CircleCI Build Status](https://circleci.com/gh/laboperator/config-pack-orb.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/laboperator/config-pack-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/laboperator/config-pack.svg)](https://circleci.com/orbs/registry/orb/laboperator/config-pack) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/laboperator/config-pack-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
-
---->
-
----
-
 ## Resources
 
 [CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/laboperator/config-pack) - The official registry page of this orb for all versions, executors, commands, and jobs described.
