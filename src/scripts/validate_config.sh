@@ -1,7 +1,7 @@
 #!/bin/bash
 
 circleci config validate \
-  --org-id 4421c6f6-6e7a-4828-9fed-8ebc67dc0920 \
-  --org-slug github/laboperator \
+  --org-id 9b4e3c5a-4325-401a-a8e2-2c79447c81ff \
+  --org-slug github/laboperator-gmbh \
   --token "$CIRCLE_TOKEN" \
   "$OUTPUT_FILE"
